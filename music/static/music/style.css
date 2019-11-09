@@ -1,0 +1,24 @@
+body{
+    background : url("images/background.png");
+}
+
+.navbar{
+border-radius: 0;
+}
+.navbar-brand{
+font-family:'Arial Verdana',cursive;
+}
+
+
+.fig-shape
+{
+max-width:380px !important;
+max-height:350px  !important;
+border-radius:380px;
+}
+.figg-shape
+{
+max-width:340px !important;
+max-height:340px  !important;
+border-radius:350px;
+}

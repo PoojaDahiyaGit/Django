@@ -1,0 +1,114 @@
+
+
+{% extends 'music/base.html' %}
+
+{% block body %}
+
+    <ul>
+       {% for album in all_albums %}
+            <li><a href= "{% url 'music:detail' album.id %}"> {{album.album_title}}</a></li>
+       {% endfor %}
+    </ul>
+<section class="ourteam" >
+		<div class = "container text-center">
+			<h1> Our Team</h1>
+			<p> our team is amazing as you know.</p>
+			<div class="row teamsetting">
+			{% for album in all_albums %}
+
+				<div class="col-lg-4 col-md-4 col-sm-10 col-12 d-block m-auto">
+					<figure class="figure">
+						<img src="{{ album.album_logo.url }}" class="figure-img img-fluid rounded-circle fig-shape"  >
+						<figcaption>
+							<h1> {{album.artist}} Band</h1>
+							<p class="figure-caption">Singer</p>
+						</figcaption>
+
+
+					</figure>
+                     <form action="" method="post">
+
+						<div class="btn-group">
+
+
+							<a href="{% url 'music:detail' album.id %}" class="btn btn-default btn-sm"style="bakground:Orange;" >View detail</a>
+							<a href="{% url 'music:album-update' album.id %}" class="btn btn-default btn-sm" style="bakground:skyblue;">Update</a>
+
+
+							<form action="{% url 'music:album-delete' {{ album.pk }}"method ="post" style="display:inline" >
+							{% csrf_token %}
+							<button type="submit"><span class="glyphicon glyphicon-trash" style="color:red;"></span>
+							</button>
+							</form>
+
+
+							<a href="{% url 'music:favorite' album.id %}" class="btn btn-default btn-sm btn-favorite">
+                          		<span class="glyphicon glyphicon-star-empty"{% if album.is_favorite %}active{% endif %} style="color:yellow;"></span>
+                     		</a>
+							<!--
+							<button type="button"  class="btn btn-default btn-sm"style="background:skyblue;" >View detail</button>
+       							<button type="button" class="btn btn-default btn-sm">
+          							<span class="glyphicon glyphicon-trash" style="color:red;"></span>
+        						</button>
+                        	<button type="button" class="btn btn-default btn-sm">
+          						<span class="glyphicon glyphicon-star-empty" style="color:yellow;"></span>
+							</button>
+							-->
+
+						</div>
+					 </form>
+				</div>
+<!--
+				<div class="col-lg-4 col-md-4 col-sm-10 col-12 d-block m-auto">
+					<figure class="figure">
+						<img src="https://pbs.twimg.com/media/CsFsPO0XYAElMhl.jpg" class="figure-img img-fluid rounded-circle  figg-shape"  >
+						<figcaption>
+							<h1> Alan Band</h1>
+							<p class="figure-caption">DJ</p>
+						</figcaption>
+					</figure>
+					<form action="" method="post">
+
+						<div class="btn-group">
+							<button type="button"  class="btn btn-default btn-sm"style="background:skyblue;" >View detail</button>
+                           <button type="button" class="btn btn-default btn-sm">
+          						<span class="glyphicon glyphicon-trash" style="color:red;"></span>
+        					</button>
+                        	<button type="button" class="btn btn-default btn-sm">
+          						<span class="glyphicon glyphicon-star-empty" style="color:yellow;"></span>
+							</button>
+						</div>
+					 </form>
+
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-10 col-12 d-block m-auto">
+					<figure class="figure">
+						<img src="https://i2.wp.com/www.liveclefs.com/wp-content/uploads/2018/09/sanam-puri.jpg?fit=760%2C460&ssl=1" class="figure-img img-fluid rounded-circle  fig-shape">
+						<figcaption>
+							<h1> Sanam Band </h1>
+							<p class="figure-caption">Singer</p>
+						</figcaption>
+					</figure>
+					<form action="" method="post">
+
+						<div class="btn-group">
+							<button type="button"  class="btn btn-default btn-sm"style="background:skyblue;" >View detail</button>
+                           <button type="button" class="btn btn-default btn-sm">
+          						<span class="glyphicon glyphicon-trash" style="color:red;"></span>
+        					</button>
+                        	<button type="button" class="btn btn-default btn-sm">
+          						<span class="glyphicon glyphicon-star-empty" style="color:yellow;"></span>
+							</button>
+						</div>
+					 </form>
+				</div>
+				-->
+
+		{% endfor %}
+			</div>
+		</div>
+
+	</section>
+
+{% endblock %}
+
